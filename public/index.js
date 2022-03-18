@@ -9,6 +9,7 @@ const joinRoom = (roomId, username) => {
 };
 
 joinRoom(roomId, userName);
+console.log(userName)
 
 form.addEventListener('submit', function (e) {
     e.preventDefault();
