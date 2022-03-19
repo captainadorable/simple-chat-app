@@ -19,6 +19,11 @@ form.addEventListener('submit', function (e) {
     }
 });
 
+socket.on('room error', () => {
+  console.log("Room not found!")
+  window.location.replace(`/roomNotFound`);
+});
+
 socket.on('chat message', (username, message) => {
     createMessage(username, message);
 });

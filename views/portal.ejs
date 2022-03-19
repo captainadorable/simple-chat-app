@@ -1,0 +1,103 @@
+<head>
+  <title>Simple Chat App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    var Rooms = "<%= Rooms %>";
+  </script>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500&display=swap");
+    body {
+      font-family: "Red Hat Display";
+    }
+  </style>
+  <link rel="stylesheet" href="/portal.css" />
+</head>
+<body
+  class="bg-gradient-to-r from-[#0b0b0b] to-[#282828] text-white flex flex-row"
+>
+  <div class="flex flex-col w-1/5 space-y-8 shadow-2xl bg-[#060606]">
+    <div class="text-2xl self-center pt-8">Rooms</div>
+    <div class="flex flex-col px-4 space-y-4 overflow-auto h-4/5">
+      <% if(Rooms.length == 0){ %>
+      <div class="self-center">
+        There is no room. It's <span class="text-red-500">boring</span>
+      </div>
+      <% } else{ %> <% Rooms.forEach((room) => {%>
+      <div class="flex flex-row justify-around space-x-2">
+        <div>
+          <%= room.name.length > 20 ? room.name.slice(0, 20) + "..." : room.name
+          %>
+        </div>
+        <div><%= room.users.length %>/24</div>
+        <button onclick="window.location.replace('<%= room.joinURL%>');">
+          Join
+        </button>
+      </div>
+      <% }); %> <% } %>
+    </div>
+    <div class="text-center px-2 pb-2">
+      These rooms are public rooms. You can only see public rooms.
+    </div>
+  </div>
+  <div class="flex flex-col content-around w-4/5">
+    <div class="self-center pt-8 h-2/6 text-center">
+      <div class="text-6xl">Private Chat</div>
+      <div class="text-xl pt-6">
+        Seems <span class="text-blue-200">mysterious</span>. I love it.
+      </div>
+    </div>
+    <div class="self-center h-4/6 w-2/6 flex flex-col text-center space-y-16">
+      <div class="text-4xl self-center">Create Room</div>
+      <form id="form" class="flex flex-col space-y-8">
+        <div class="flex flex-col justify-center space-y-2">
+          <div class="self-start">Get a username</div>
+          <input
+            type="text"
+            id="username"
+            placeholder="Username"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+        </div>
+        <div class="flex flex-col justify-center space-y-2">
+          <div class="self-start">Get a room name</div>
+          <input
+            type="text"
+            id="roomname"
+            placeholder="Room Name"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+        </div>
+        <div class="flex flex-row items-center space-y-2">
+          <input
+            class="check-box-portal appearance-none h-4 w-4 rounded-sm bg-white checked:bg-red-400 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+            type="checkbox"
+            id="isprivate"
+          />
+          <div class="pl-2">Private Room</div>
+        </div>
+        <button
+          class="bg-transparent hover:bg-purple-500 text-purple-500 font-semibold hover:text-white py-2 px-4 border border-purple-500 hover:border-transparent rounded"
+        >
+          Create room.
+        </button>
+      </form>
+
+      <script>
+        var form = document.getElementById("form");
+        var username = document.getElementById("username");
+        var roomname = document.getElementById("roomname");
+        var isprivate = document.getElementById("isprivate");
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          window.location.replace(
+            `createRoom?userName=${username.value}&roomName=${roomname.value}&isPrivate=${isprivate.checked}`
+          );
+        });
+      </script>
+    </div>
+    <div class="h-1/6 flex items-end justify-center pb-8">
+      <%- include('components/footer') %>
+    </div>
+  </div>
+</body>

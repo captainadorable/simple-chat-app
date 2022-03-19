@@ -1,0 +1,53 @@
+#rgbbutton {
+    border-color: #f54242;
+    animation-name: rainbowBorder;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+  }
+
+
+#rgbbutton:hover {
+    background-color: #f54242;
+    animation-name: rainbowHover;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+  }
+
+@keyframes rainbowBorder {
+    0% {border-color:#f54242 ;}
+    10% {border-color:#f58a42 ;}
+    20% {border-color: #f5e642;}
+    30% {border-color: #96f542;}
+    40% {border-color: #42f56c;}
+    50% {border-color: #42f5e3;}
+    60% {border-color: #42b3f5;}
+    70% {border-color: #4251f5;}
+    80% {border-color: #9942f5;}
+    90% {border-color: #f542b9;}
+    100% {border-color:#f54242 ;}
+}
+
+@keyframes rainbowHover {
+    0% {background-color:#f54242 ;}
+    10% {background-color:#f58a42 ;}
+    20% {background-color: #f5e642;}
+    30% {background-color: #96f542;}
+    40% {background-color: #42f56c;}
+    50% {background-color: #42f5e3;}
+    60% {background-color: #42b3f5;}
+    70% {background-color: #4251f5;}
+    80% {background-color: #9942f5;}
+    90% {background-color: #f542b9;}
+    100% {background-color:#f54242 ;}
+    0% {border-color:#f54242 ;}
+    10% {border-color:#f58a42 ;}
+    20% {border-color: #f5e642;}
+    30% {border-color: #96f542;}
+    40% {border-color: #42f56c;}
+    50% {border-color: #42f5e3;}
+    60% {border-color: #42b3f5;}
+    70% {border-color: #4251f5;}
+    80% {border-color: #9942f5;}
+    90% {border-color: #f542b9;}
+    100% {border-color:#f54242 ;}
+}

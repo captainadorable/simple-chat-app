@@ -1,44 +1,49 @@
 <head>
-    <title>Get username</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        var redirectTo = '<%= redirectTo %>';
-    </script>
-    <style>@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500&display=swap'); body { font-family: 'Red Hat Display' };</style>
+  <title>Get username</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    var redirectTo = "<%= redirectTo %>";
+  </script>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500&display=swap");
+    body {
+      font-family: "Red Hat Display";
+    }
+  </style>
 </head>
-<body>
-    <div class="flex flex-col items-center space-y-4 mt-48">
-        <div class="text-6xl pb-12">Simple Chat App!</div>
-        <div class="text-2xl">Get username to join room.</div>
-        <div class="pb-6">
-            You are joining a room whose id is
-            <span class="text-blue-600"><%= redirectTo %></span> .
-        </div>
-
-        <form id="form" class="flex flex-col space-y-2">
-            <input
-                type="text"
-                id="username"
-                placeholder="Username"
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            />
-            <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">Join room.</button>
-        </form>
-
-        <div class="flex flex-row">
-            <div>Maded by <span class="text-blue-600">CaptAdorable</span></div>
-        </div>
-
-        <script>
-            var form = document.getElementById('form');
-            var input = document.getElementById('username');
-
-            form.addEventListener('submit', function (e) {
-                e.preventDefault();
-                window.location.replace(
-                    `rooms/${redirectTo}?userName=${input.value}`
-                );
-            });
-        </script>
+<body class="bg-gradient-to-r from-[#0b0b0b] to-[#282828] text-white">
+  <div class="flex flex-col items-center space-y-4 mt-48">
+    <div class="text-6xl pb-12">Simple Chat App!</div>
+    <div class="text-2xl">Get username to join room.</div>
+    <div class="pb-6">
+      You are joining a room whose id is
+      <span class="text-blue-400"><%= redirectTo %></span> .
     </div>
+
+    <form id="form" class="flex flex-col space-y-2">
+      <input
+        type="text"
+        id="username"
+        placeholder="Username"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      />
+      <button
+        class="bg-transparent hover:bg-purple-700 text-purple-700 font-semibold hover:text-white py-2 px-4 border border-purple-700 hover:border-transparent rounded"
+      >
+        Join room.
+      </button>
+    </form>
+
+    <div class="fixed bottom-0 pb-8"><%- include('components/footer') %></div>
+
+    <script>
+      var form = document.getElementById("form");
+      var input = document.getElementById("username");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        window.location.replace(`rooms/${redirectTo}?userName=${input.value}`);
+      });
+    </script>
+  </div>
 </body>
